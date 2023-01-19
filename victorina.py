@@ -5,11 +5,13 @@ from PySide6.QtCore import Qt, Slot
 from PySide6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout,QLineEdit,QFrame,QRadioButton
 
 
-data ={"name": "Превед Медвед","answers": ["От Джона Лури","От Бебры","Из Майнкрафта"]}
+data1 ={"name": "Превед Медвед","answers": ["Он реален","Он из ГТА","Он из Роблокса"]}
+data2 ={"name": "Штат Огайо","answers": ["От Джона Лури","От Бебры","Из Майнкрафта"]}
+data3 ={"name": "Это Спарта","answers": ["От Орущего Школьника","Из Фильма 300 спартанцев","От Репера"]}
+lst = [data1,data2,data3]
 # главное окно приложения расширяет класс QWidget
 class MainWidget(QFrame,QVBoxLayout):
     # список предложений
-    strings = ["Перестань Щелкать", "Тестируй Это приложение!!!!!!",":D"]
     def show_new_window(self):
         #self.hide()
         self.button3.hide()
@@ -62,8 +64,9 @@ class AnotherWindow(QFrame,QVBoxLayout,QWidget):
         
     def __init__(self):
         super().__init__()
-        question = data["name"]
-        answers = data["answers"]
+        for data in lst:
+            question = data["name"]
+            answers = data["answers"]
         self.text = QLabel(question, alignment=Qt.AlignCenter)
         self.layout = QVBoxLayout(self)
         self.radiobutton = QRadioButton(answers[0])
